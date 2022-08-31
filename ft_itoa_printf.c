@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_printf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsauvage <jsauvage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 13:54:42 by jsauvage          #+#    #+#             */
-/*   Updated: 2022/07/12 14:03:59 by jsauvage         ###   ########.fr       */
+/*   Created: 2022/05/25 10:50:36 by jsauvage          #+#    #+#             */
+/*   Updated: 2022/07/12 14:55:01 by jsauvage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static long	countchar(long n)
 {
@@ -30,19 +30,9 @@ static long	countchar(long n)
 	return (i);
 }
 
-static int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 static char	*ft_revstr(char *s)
 {
-	int		i;
+	size_t	i;
 	char	tmp;
 
 	i = 0;
@@ -67,7 +57,7 @@ static int	chechnegative(long n, int *negative)
 	return (n);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa_printf(long n)
 {
 	char			*res;
 	int				i;
@@ -95,15 +85,3 @@ char	*ft_itoa(int n)
 		res[i] = 0;
 	return (ft_revstr(res));
 }
-
-// #include <limits.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char *str;
-// 	str = ft_itoa(INT_MIN);
-// 	printf("%s", str);
-// 	free(str);
-// 	// printf("%d", ft_itoa(0)[1]);
-// }

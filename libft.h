@@ -6,14 +6,46 @@
 /*   By: jsauvage <jsauvage@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:26:59 by jsauvage          #+#    #+#             */
-/*   Updated: 2022/05/19 10:36:00 by jsauvage         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:29:50 by jsauvage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+
+# endif
+
+typedef struct s_gnl
+{
+	char			*content;
+	struct s_gnl	*next;
+}					t_gnl;
+
+char				*get_next_line(int fd);
+void				free_tmp(t_gnl *tmp);
+void				generate_line(char **line, t_gnl *tmp);
+t_gnl				*ft_lstlast_gnl(t_gnl *tmp);
+int					found_nl(t_gnl *tmp);
+
+int					ft_printf(const char *s, ...);
+void				ft_putstr(char *str, int *count, int *nb);
+int					ft_strlen_printf(const char *s);
+void				ft_putchar(char c);
+void				ft_putnbr(int n, int *count, int *i);
+void				ft_putunnbr(unsigned int n, int *count, int *i);
+void				ft_putnbr_base(unsigned long nbr, char *base);
+void				ft_print_memory(unsigned long pointer, int *i, int *count);
+char				*ft_itohex(unsigned long n, char *base);
+void				ft_putc(char c, int *i, int *count);
+char				*ft_itoa_printf(long n);
+void				ft_puthex(unsigned long n, char *base, int *count, int *i);
+void				ft_putpercent(int *count, int *i, const char *s);
 
 typedef struct s_list
 {
